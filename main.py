@@ -56,7 +56,7 @@ def getCorrelationDic(c_list):
             if c_list[item][0].find(c_id) > 1:
                 CorrelationDic[CorrelationID].append(c_list[item])
 
-    return CorrelationDic
+    return CorrelationDic, CorrelList
 
 def isJson(j_line):
     try:
@@ -65,7 +65,7 @@ def isJson(j_line):
         return False
     return True
 
-def showLog(c_dic):
+def showLog(c_dic, c_list):
     for item in c_dic.keys():
         print("Correlation ID : %s" %(item))
         for idx in range(len(c_dic[item])):
