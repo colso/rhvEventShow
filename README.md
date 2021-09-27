@@ -2,7 +2,7 @@
 
 ## sample test result
 
-1. Add host in cluster
+* Add host in cluster
 ```
 Correlation ID : db61af2c-bc1f-40c5-9903-5d35251a62dd
 2021-09-26 10:26:55,453-04  DEBUG Server: RunAction invoked!
@@ -20,7 +20,7 @@ Correlation ID : db61af2c-bc1f-40c5-9903-5d35251a62dd
 2021-09-26 10:26:58,794-04  DEBUG method: getAllWithUniqueId, params: [c1c0c8a1-5f54-4469-a204-17074508eb81], timeElapsed: 51ms
 2021-09-26 10:26:58,878-04   INFO Running command: AddVdsCommand internal: false. Entities affected :  ID: 8fabc382-0c2a-4160-94df-632e5a3b93e7 Type: ClusterAction group CREATE_HOST with role type ADMIN
 ```
-1. Change host state from Management to Maintenance
+* Change host state from Management to Maintenance
 ```
 Correlation ID : d78e98ae-7d48-4acf-87ad-3553ff3ecb4f
 2021-09-26 10:43:17,737-04  DEBUG Server: RunAction invoked!
@@ -100,7 +100,7 @@ Correlation ID : d78e98ae-7d48-4acf-87ad-3553ff3ecb4f
 2021-09-26 10:43:25,019-04   INFO Ending command 'org.ovirt.engine.core.bll.MaintenanceNumberOfVdssCommand' successfully.
 ```
 
-1. Remove host in cluster
+* Remove host in cluster
 ```
 Correlation ID : a390d81e-4a43-409d-8d59-cbd03d0e85af
 2021-09-26 10:43:49,370-04  DEBUG Server: RunMultipleAction invoked! [amount of actions: 1]
