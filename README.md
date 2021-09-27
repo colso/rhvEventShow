@@ -324,4 +324,17 @@ Correlation ID : 52c3e7a3-8051-4763-b703-4b457db2ab3b
 
 * Destroy Storage Domain
 ```
+Correlation ID : 5d205321-4592-4aa2-b47c-ee97ef863e31
+2021-09-27 12:03:12,597-04  DEBUG Server: RunMultipleAction invoked! [amount of actions: 1]
+2021-09-27 12:03:12,597-04  DEBUG IP '172.88.0.1', Session ID 'LxJxd_1e7gUDc05lTwtIXjV9owAYjDwuc2-PMRmx'
+2021-09-27 12:03:12,618-04   INFO Lock Acquired to object 'EngineLock:{exclusiveLocks='[477cd753-f523-40ab-8330-492550eb9532=STORAGE]', sharedLocks=''}'
+2021-09-27 12:03:12,643-04  DEBUG Executing task: EE-ManagedThreadFactory-engine-Thread-734880
+2021-09-27 12:03:12,760-04   INFO Running command: ForceRemoveStorageDomainCommand internal: false. Entities affected :  ID: 477cd753-f523-40ab-8330-492550eb9532 Type: StorageAction group DELETE_STORAGE_DOMAIN with role type ADMIN
+2021-09-27 12:03:12,763-04  DEBUG method: getAllForStoragePoolAndStatus, params: [7f6b4b55-8017-4fbb-be4d-dc4e4d789064, Up], timeElapsed: 2ms
+2021-09-27 12:03:12,766-04  DEBUG method: getAllForStoragePoolAndStatus, params: [7f6b4b55-8017-4fbb-be4d-dc4e4d789064, Up], timeElapsed: 3ms
+2021-09-27 12:03:12,766-04   INFO Avoid running host operations like reconstruct/detach on force remove for storage domain 'rhvst02_tdc04st'.Storage domain attached to pool: 'true'Active Hosts exists in DC: 'false'
+2021-09-27 12:03:12,892-04  DEBUG method: getAllForStorageDomain, params: [477cd753-f523-40ab-8330-492550eb9532], timeElapsed: 126ms
+2021-09-27 12:03:13,014-04  DEBUG method: getAllVMsWithDisksOnOtherStorageDomain, params: [477cd753-f523-40ab-8330-492550eb9532], timeElapsed: 121ms
+2021-09-27 12:03:13,136-04   INFO EVENT_ID: USER_FORCE_REMOVE_STORAGE_DOMAIN(981), Storage Domain rhvst02_tdc04st was forcibly removed by admin@internal-authz
+2021-09-27 12:03:13,153-04   INFO Lock freed to object 'EngineLock:{exclusiveLocks='[477cd753-f523-40ab-8330-492550eb9532=STORAGE]', sharedLocks=''}'
 ```
