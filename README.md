@@ -140,3 +140,201 @@ Correlation ID : a390d81e-4a43-409d-8d59-cbd03d0e85af
 2021-09-26 10:44:20,452-04   INFO EVENT_ID: USER_REMOVE_VDS(44), Host tdc44c01c was removed by admin@internal-authz.
 2021-09-26 10:44:20,455-04   INFO Lock freed to object 'EngineLock:{exclusiveLocks='[345b29a4-dac0-4f60-be3e-dde1afe1325e=VDS, VDS_POOL_AND_STORAGE_CONNECTIONS345b29a4-dac0-4f60-be3e-dde1afe1325e=VDS_POOL_AND_STORAGE_CONNECTIONS]', sharedLocks=''}'
 ```
+
+* Add Storage Domain to pool
+```
+Correlation ID : 18c373f1-132b-4db3-9884-6a44301c4eb2
+2021-09-27 11:42:04,035-04  DEBUG Server: RunAction invoked!
+2021-09-27 11:42:04,035-04  DEBUG Action type 'AddStorageServerConnection', Parameters 'StorageServerConnectionParametersBase:{commandId='null', user='null', commandType='Unknown'}'
+2021-09-27 11:42:04,035-04  DEBUG IP '172.88.0.1', Session ID 'LxJxd_1e7gUDc05lTwtIXjV9owAYjDwuc2-PMRmx'
+2021-09-27 11:42:04,061-04  DEBUG method: get, params: [27c71301-f446-4465-9670-5035fee28e47], timeElapsed: 8ms
+2021-09-27 11:42:04,097-04   INFO Lock Acquired to object 'EngineLock:{exclusiveLocks='[rhvst01.colso.dl02:/rhvst02_tdc04st=STORAGE_CONNECTION]', sharedLocks=''}'
+2021-09-27 11:42:04,127-04   INFO Running command: AddStorageServerConnectionCommand internal: false. Entities affected :  ID: aaa00000-0000-0000-0000-123456789aaa Type: SystemAction group CREATE_STORAGE_DOMAIN with role type ADMIN
+2021-09-27 11:42:04,131-04   INFO START, ConnectStorageServerVDSCommand(HostName = tdc44c01c, StorageServerConnectionManagementVDSParameters:{hostId='27c71301-f446-4465-9670-5035fee28e47', storagePoolId='00000000-0000-0000-0000-000000000000', storageType='NFS', connectionList='[StorageServerConnections:{id='null', connection='rhvst01.colso.dl02:/rhvst02_tdc04st', iqn='null', vfsType='null', mountOptions='null', nfsVersion='AUTO', nfsRetrans='null', nfsTimeo='null', iface='null', netIfaceName='null'}]', sendNetworkEventOnFailure='true'}), log id: 45df8ea2
+2021-09-27 11:42:04,141-04  DEBUG method: get, params: [27c71301-f446-4465-9670-5035fee28e47], timeElapsed: 8ms
+2021-09-27 11:42:04,143-04  DEBUG SEND
+                                  ovirtCorrelationId:18c373f1-132b-4db3-9884-6a44301c4eb2
+                                  destination:jms.topic.vdsm_requests
+                                  reply-to:jms.topic.vdsm_responses
+                                  content-length:407
+{
+    "params": {
+        "connectionParams": [
+            {
+                "tpgt": "1",
+                "id": "00000000-0000-0000-0000-000000000000",
+                "connection": "rhvst01.colso.dl02:/rhvst02_tdc04st",
+                "iqn": "",
+                "user": "",
+                "ipv6_enabled": "false",
+                "protocol_version": "auto",
+                "password": "",
+                "port": ""
+            }
+        ],
+        "storagepoolID": "00000000-0000-0000-0000-000000000000",
+        "domainType": 1
+    },
+    "jsonrpc": "2.0",
+    "method": "StoragePool.connectStorageServer",
+    "id": "6a8726ba-5559-428e-9edc-ea4980b5f2c6"
+}
+2021-09-27 11:42:04,144-04  DEBUG Message sent: SEND
+                                  destination:jms.topic.vdsm_requests
+                                  content-length:407
+                                  ovirtCorrelationId:18c373f1-132b-4db3-9884-6a44301c4eb2
+                                  reply-to:jms.topic.vdsm_responses
+                                  <JsonRpcRequest id: "6a8726ba-5559-428e-9edc-ea4980b5f2c6", method: StoragePool.connectStorageServer, params: {storagepoolID=00000000-0000-0000-0000-000000000000, domainType=1, connectionParams=[{password=, protocol_version=auto, port=, iqn=, connection=rhvst01.colso.dl02:/rhvst02_tdc04st, ipv6_enabled=false, id=00000000-0000-0000-0000-000000000000, user=, tpgt=1}]}>
+2021-09-27 11:42:04,493-04   INFO FINISH, ConnectStorageServerVDSCommand, return: {00000000-0000-0000-0000-000000000000=0}, log id: 45df8ea2
+2021-09-27 11:42:04,494-04  DEBUG method: runVdsCommand, params: [ConnectStorageServer, StorageServerConnectionManagementVDSParameters:{hostId='27c71301-f446-4465-9670-5035fee28e47', storagePoolId='00000000-0000-0000-0000-000000000000', storageType='NFS', connectionList='[StorageServerConnections:{id='null', connection='rhvst01.colso.dl02:/rhvst02_tdc04st', iqn='null', vfsType='null', mountOptions='null', nfsVersion='AUTO', nfsRetrans='null', nfsTimeo='null', iface='null', netIfaceName='null'}]', sendNetworkEventOnFailure='true'}], timeElapsed: 366ms
+2021-09-27 11:42:04,529-04   INFO Lock freed to object 'EngineLock:{exclusiveLocks='[rhvst01.colso.dl02:/rhvst02_tdc04st=STORAGE_CONNECTION]', sharedLocks=''}'
+2021-09-27 11:42:04,530-04  DEBUG method: runAction, params: [AddStorageServerConnection, StorageServerConnectionParametersBase:{commandId='df5185c0-a36e-4fd9-94f2-cb9cf22e8607', user='null', commandType='Unknown'}], timeElapsed: 494ms
+
+Correlation ID : 86e5c25a-54cb-4ef9-bff5-da11459c0789
+2021-09-27 11:42:04,561-04  DEBUG Server: RunAction invoked!
+2021-09-27 11:42:04,562-04  DEBUG Action type 'AddNFSStorageDomain', Parameters 'StorageDomainManagementParameter:{commandId='null', user='null', commandType='Unknown'}'
+2021-09-27 11:42:04,562-04  DEBUG IP '172.88.0.1', Session ID 'LxJxd_1e7gUDc05lTwtIXjV9owAYjDwuc2-PMRmx'
+2021-09-27 11:42:04,625-04  DEBUG method: get, params: [27c71301-f446-4465-9670-5035fee28e47], timeElapsed: 8ms
+2021-09-27 11:42:04,696-04  DEBUG method: getAllForStoragePool, params: [null], timeElapsed: 69ms
+2021-09-27 11:42:04,750-04   INFO Running command: AddNFSStorageDomainCommand internal: false. Entities affected :  ID: aaa00000-0000-0000-0000-123456789aaa Type: SystemAction group CREATE_STORAGE_DOMAIN with role type ADMIN
+
+Correlation ID : a4b962d6-3b02-422b-a8a1-1a24fc8c9827
+2021-09-27 11:42:07,162-04  DEBUG Server: RunAction invoked!
+2021-09-27 11:42:07,162-04  DEBUG Action type 'DisconnectStorageServerConnection', Parameters 'StorageServerConnectionParametersBase:{commandId='null', user='null', commandType='Unknown'}'
+2021-09-27 11:42:07,162-04  DEBUG IP '172.88.0.1', Session ID 'LxJxd_1e7gUDc05lTwtIXjV9owAYjDwuc2-PMRmx'
+2021-09-27 11:42:07,186-04  DEBUG method: get, params: [27c71301-f446-4465-9670-5035fee28e47], timeElapsed: 9ms
+2021-09-27 11:42:07,254-04   INFO Running command: DisconnectStorageServerConnectionCommand internal: false. Entities affected :  ID: aaa00000-0000-0000-0000-123456789aaa Type: SystemAction group CREATE_STORAGE_DOMAIN with role type ADMIN
+2021-09-27 11:42:07,257-04   INFO START, DisconnectStorageServerVDSCommand(HostName = tdc44c01c, StorageServerConnectionManagementVDSParameters:{hostId='27c71301-f446-4465-9670-5035fee28e47', storagePoolId='00000000-0000-0000-0000-000000000000', storageType='NFS', connectionList='[StorageServerConnections:{id='ccde8335-fe34-4396-bb8e-17d53bcc046a', connection='rhvst01.colso.dl02:/rhvst02_tdc04st', iqn='null', vfsType='null', mountOptions='null', nfsVersion='AUTO', nfsRetrans='null', nfsTimeo='null', iface='null', netIfaceName='null'}]', sendNetworkEventOnFailure='true'}), log id: 589b1efb
+2021-09-27 11:42:07,270-04  DEBUG method: get, params: [27c71301-f446-4465-9670-5035fee28e47], timeElapsed: 8ms
+2021-09-27 11:42:07,271-04  DEBUG SEND
+                                  ovirtCorrelationId:a4b962d6-3b02-422b-a8a1-1a24fc8c9827
+                                  destination:jms.topic.vdsm_requests
+                                  reply-to:jms.topic.vdsm_responses
+                                  content-length:410
+{
+    "params": {
+        "connectionParams": [
+            {
+                "tpgt": "1",
+                "id": "ccde8335-fe34-4396-bb8e-17d53bcc046a",
+                "connection": "rhvst01.colso.dl02:/rhvst02_tdc04st",
+                "iqn": "",
+                "user": "",
+                "ipv6_enabled": "false",
+                "protocol_version": "auto",
+                "password": "",
+                "port": ""
+            }
+        ],
+        "storagepoolID": "00000000-0000-0000-0000-000000000000",
+        "domainType": 1
+    },
+    "jsonrpc": "2.0",
+    "method": "StoragePool.disconnectStorageServer",
+    "id": "845d22a2-9934-44c1-bc58-5cd819bacc9d"
+}
+2021-09-27 11:42:07,271-04  DEBUG Message sent: SEND
+                                  destination:jms.topic.vdsm_requests
+                                  content-length:410
+                                  ovirtCorrelationId:a4b962d6-3b02-422b-a8a1-1a24fc8c9827
+                                  reply-to:jms.topic.vdsm_responses
+                                  <JsonRpcRequest id: "845d22a2-9934-44c1-bc58-5cd819bacc9d", method: StoragePool.disconnectStorageServer, params: {storagepoolID=00000000-0000-0000-0000-000000000000, domainType=1, connectionParams=[{password=, protocol_version=auto, port=, iqn=, connection=rhvst01.colso.dl02:/rhvst02_tdc04st, ipv6_enabled=false, id=ccde8335-fe34-4396-bb8e-17d53bcc046a, user=, tpgt=1}]}>
+2021-09-27 11:42:07,953-04   INFO FINISH, DisconnectStorageServerVDSCommand, return: {ccde8335-fe34-4396-bb8e-17d53bcc046a=0}, log id: 589b1efb
+2021-09-27 11:42:07,953-04  DEBUG method: runVdsCommand, params: [DisconnectStorageServer, StorageServerConnectionManagementVDSParameters:{hostId='27c71301-f446-4465-9670-5035fee28e47', storagePoolId='00000000-0000-0000-0000-000000000000', storageType='NFS', connectionList='[StorageServerConnections:{id='ccde8335-fe34-4396-bb8e-17d53bcc046a', connection='rhvst01.colso.dl02:/rhvst02_tdc04st', iqn='null', vfsType='null', mountOptions='null', nfsVersion='AUTO', nfsRetrans='null', nfsTimeo='null', iface='null', netIfaceName='null'}]', sendNetworkEventOnFailure='true'}], timeElapsed: 698ms
+2021-09-27 11:42:07,978-04  DEBUG method: runAction, params: [DisconnectStorageServerConnection, StorageServerConnectionParametersBase:{commandId='6ceadbd8-256b-4990-84fa-ff7be707a23f', user='null', commandType='Unknown'}], timeElapsed: 814ms
+
+Correlation ID : 52c3e7a3-8051-4763-b703-4b457db2ab3b
+2021-09-27 11:42:08,088-04  DEBUG Server: RunAction invoked!
+2021-09-27 11:42:08,088-04  DEBUG Action type 'AttachStorageDomainToPool', Parameters 'AttachStorageDomainToPoolParameters:{commandId='null', user='null', commandType='Unknown'}'
+2021-09-27 11:42:08,089-04  DEBUG IP '172.88.0.1', Session ID 'LxJxd_1e7gUDc05lTwtIXjV9owAYjDwuc2-PMRmx'
+2021-09-27 11:42:08,177-04   INFO Lock Acquired to object 'EngineLock:{exclusiveLocks='[477cd753-f523-40ab-8330-492550eb9532=STORAGE]', sharedLocks=''}'
+2021-09-27 11:42:08,187-04  DEBUG method: getAllForStoragePoolAndStatus, params: [7f6b4b55-8017-4fbb-be4d-dc4e4d789064, Up], timeElapsed: 9ms
+2021-09-27 11:42:08,246-04   INFO Running command: AttachStorageDomainToPoolCommand internal: false. Entities affected :  ID: 477cd753-f523-40ab-8330-492550eb9532 Type: StorageAction group MANIPULATE_STORAGE_DOMAIN with role type ADMIN,  ID: 7f6b4b55-8017-4fbb-be4d-dc4e4d789064 Type: StoragePoolAction group MANIPULATE_STORAGE_DOMAIN with role type ADMIN
+2021-09-27 11:42:08,323-04  DEBUG method: getAllForStoragePoolAndStatus, params: [7f6b4b55-8017-4fbb-be4d-dc4e4d789064, Up], timeElapsed: 8ms
+2021-09-27 11:42:08,666-04   INFO START, HSMGetStorageDomainInfoVDSCommand(HostName = tdc44c01c, HSMGetStorageDomainInfoVDSCommandParameters:{hostId='27c71301-f446-4465-9670-5035fee28e47', storageDomainId='477cd753-f523-40ab-8330-492550eb9532'}), log id: 68372505
+2021-09-27 11:42:08,666-04  DEBUG SEND
+                                  ovirtCorrelationId:52c3e7a3-8051-4763-b703-4b457db2ab3b
+                                  destination:jms.topic.vdsm_requests
+                                  reply-to:jms.topic.vdsm_responses
+                                  content-length:162
+{
+    "params": {
+        "storagedomainID": "477cd753-f523-40ab-8330-492550eb9532"
+    },
+    "jsonrpc": "2.0",
+    "method": "StorageDomain.getInfo",
+    "id": "96ebef27-5b21-4158-8446-8a08c5a80253"
+}
+2021-09-27 11:42:08,667-04  DEBUG Message sent: SEND
+                                  destination:jms.topic.vdsm_requests
+                                  content-length:162
+                                  ovirtCorrelationId:52c3e7a3-8051-4763-b703-4b457db2ab3b
+                                  reply-to:jms.topic.vdsm_responses
+                                  <JsonRpcRequest id: "96ebef27-5b21-4158-8446-8a08c5a80253", method: StorageDomain.getInfo, params: {storagedomainID=477cd753-f523-40ab-8330-492550eb9532}>
+2021-09-27 11:42:09,447-04   INFO FINISH, HSMGetStorageDomainInfoVDSCommand, return: <StorageDomainStatic:{name='rhvst02_tdc04st', id='477cd753-f523-40ab-8330-492550eb9532'}, null>, log id: 68372505
+2021-09-27 11:42:09,448-04  DEBUG method: runVdsCommand, params: [HSMGetStorageDomainInfo, HSMGetStorageDomainInfoVDSCommandParameters:{hostId='27c71301-f446-4465-9670-5035fee28e47', storageDomainId='477cd753-f523-40ab-8330-492550eb9532'}], timeElapsed: 784ms
+2021-09-27 11:42:09,510-04   INFO START, AttachStorageDomainVDSCommand( AttachStorageDomainVDSCommandParameters:{storagePoolId='7f6b4b55-8017-4fbb-be4d-dc4e4d789064', ignoreFailoverLimit='false', storageDomainId='477cd753-f523-40ab-8330-492550eb9532'}), log id: 779d768b
+2021-09-27 11:42:09,531-04  DEBUG SEND
+                                  ovirtCorrelationId:52c3e7a3-8051-4763-b703-4b457db2ab3b
+                                  destination:jms.topic.vdsm_irs_requests
+                                  reply-to:jms.topic.vdsm_irs_responses
+                                  content-length:216
+{
+    "params": {
+        "storagepoolID": "7f6b4b55-8017-4fbb-be4d-dc4e4d789064",
+        "storagedomainID": "477cd753-f523-40ab-8330-492550eb9532"
+    },
+    "jsonrpc": "2.0",
+    "method": "StorageDomain.attach",
+    "id": "222df53f-4078-46ba-8b14-c58eb161893f"
+}
+2021-09-27 11:42:09,532-04  DEBUG Message sent: SEND
+                                  destination:jms.topic.vdsm_irs_requests
+                                  content-length:216
+                                  ovirtCorrelationId:52c3e7a3-8051-4763-b703-4b457db2ab3b
+                                  reply-to:jms.topic.vdsm_irs_responses
+                                  <JsonRpcRequest id: "222df53f-4078-46ba-8b14-c58eb161893f", method: StorageDomain.attach, params: {storagedomainID=477cd753-f523-40ab-8330-492550eb9532, storagepoolID=7f6b4b55-8017-4fbb-be4d-dc4e4d789064}>
+2021-09-27 11:42:32,686-04   INFO FINISH, AttachStorageDomainVDSCommand, return: , log id: 779d768b
+2021-09-27 11:42:32,687-04  DEBUG method: runVdsCommand, params: [AttachStorageDomain, AttachStorageDomainVDSCommandParameters:{storagePoolId='7f6b4b55-8017-4fbb-be4d-dc4e4d789064', ignoreFailoverLimit='false', storageDomainId='477cd753-f523-40ab-8330-492550eb9532'}], timeElapsed: 23233ms
+2021-09-27 11:42:32,725-04   INFO START, GetImagesListVDSCommand( GetImagesListVDSCommandParameters:{storagePoolId='7f6b4b55-8017-4fbb-be4d-dc4e4d789064', ignoreFailoverLimit='false', sdUUID='477cd753-f523-40ab-8330-492550eb9532'}), log id: 12f305f8
+2021-09-27 11:42:32,725-04  DEBUG Waiting on other task to finish (0 additional threads are queued)
+2021-09-27 11:42:32,911-04  DEBUG SEND
+                                  ovirtCorrelationId:52c3e7a3-8051-4763-b703-4b457db2ab3b
+                                  destination:jms.topic.vdsm_irs_requests
+                                  reply-to:jms.topic.vdsm_irs_responses
+                                  content-length:164
+{
+    "params": {
+        "storagedomainID": "477cd753-f523-40ab-8330-492550eb9532"
+    },
+    "jsonrpc": "2.0",
+    "method": "StorageDomain.getImages",
+    "id": "1c8717c5-dc20-4a31-acb1-07c6e4bb2125"
+}
+2021-09-27 11:42:32,911-04  DEBUG Message sent: SEND
+                                  destination:jms.topic.vdsm_irs_requests
+                                  content-length:164
+                                  ovirtCorrelationId:52c3e7a3-8051-4763-b703-4b457db2ab3b
+                                  reply-to:jms.topic.vdsm_irs_responses
+                                  <JsonRpcRequest id: "1c8717c5-dc20-4a31-acb1-07c6e4bb2125", method: StorageDomain.getImages, params: {storagedomainID=477cd753-f523-40ab-8330-492550eb9532}>
+2021-09-27 11:42:32,970-04   INFO FINISH, GetImagesListVDSCommand, return: [], log id: 12f305f8
+2021-09-27 11:42:32,970-04  DEBUG method: runVdsCommand, params: [GetImagesList, GetImagesListVDSCommandParameters:{storagePoolId='7f6b4b55-8017-4fbb-be4d-dc4e4d789064', ignoreFailoverLimit='false', sdUUID='477cd753-f523-40ab-8330-492550eb9532'}], timeElapsed: 247ms
+```
+
+
+* Destroy Storage Domain
+```
+Correlation ID : 5d205321-4592-4aa2-b47c-ee97ef863e31
+2021-09-27 12:03:12,597-04  DEBUG Server: RunMultipleAction invoked! [amount of actions: 1]
+2021-09-27 12:03:12,597-04  DEBUG IP '172.88.0.1', Session ID 'LxJxd_1e7gUDc05lTwtIXjV9owAYjDwuc2-PMRmx'
+2021-09-27 12:03:12,618-04   INFO Lock Acquired to object 'EngineLock:{exclusiveLocks='[477cd753-f523-40ab-8330-492550eb9532=STORAGE]', sharedLocks=''}'
+2021-09-27 12:03:12,643-04  DEBUG Executing task: EE-ManagedThreadFactory-engine-Thread-734880
+2021-09-27 12:03:12,760-04   INFO Running command: ForceRemoveStorageDomainCommand internal: false. Entities affected :  ID: 477cd753-f523-40ab-8330-492550eb9532 Type: StorageAction group DELETE_STORAGE_DOMAIN with role type ADMIN
+2021-09-27 12:03:12,763-04  DEBUG method: getAllForStoragePoolAndStatus, params: [7f6b4b55-8017-4fbb-be4d-dc4e4d789064, Up], timeElapsed: 2ms
+2021-09-27 12:03:12,766-04  DEBUG method: getAllForStoragePoolAndStatus, params: [7f6b4b55-8017-4fbb-be4d-dc4e4d789064, Up], timeElapsed: 3ms
+2021-09-27 12:03:12,766-04   INFO Avoid running host operations like reconstruct/detach on force remove for storage domain 'rhvst02_tdc04st'.Storage domain attached to pool: 'true'Active Hosts exists in DC: 'false'
+2021-09-27 12:03:12,892-04  DEBUG method: getAllForStorageDomain, params: [477cd753-f523-40ab-8330-492550eb9532], timeElapsed: 126ms
+2021-09-27 12:03:13,014-04  DEBUG method: getAllVMsWithDisksOnOtherStorageDomain, params: [477cd753-f523-40ab-8330-492550eb9532], timeElapsed: 121ms
+2021-09-27 12:03:13,136-04   INFO EVENT_ID: USER_FORCE_REMOVE_STORAGE_DOMAIN(981), Storage Domain rhvst02_tdc04st was forcibly removed by admin@internal-authz
+2021-09-27 12:03:13,153-04   INFO Lock freed to object 'EngineLock:{exclusiveLocks='[477cd753-f523-40ab-8330-492550eb9532=STORAGE]', sharedLocks=''}'
+```
