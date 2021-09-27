@@ -66,7 +66,7 @@ def isJson(j_line):
     return True
 
 def showLog(c_dic, c_list):
-    for item in c_dic.keys():
+    for item in c_list:
         print("Correlation ID : %s" %(item))
         for idx in range(len(c_dic[item])):
             log_list=c_dic[item][idx][0].split(' ')
@@ -85,7 +85,8 @@ def showLog(c_dic, c_list):
 def process(fp):
     with open(fp) as fd:
         c_l = get_chunk_list(fd)
-    showLog(getCorrelationDic(c_l))
+    c_dic, c_list = getCorrelationDic(c_l)
+    showLog(c_dic, c_list)
 
 def main():
     process(sys.argv[1])
