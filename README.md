@@ -1,5 +1,15 @@
 # rhvEventShow
 
+## Usage
+1. Create text file from rhv engine log
+```
+# strings /var/log/ovirt-engine/engine.log > /tmp/e.log
+```
+2. Execute script including the text log file
+```
+# ~/rhvEventShow/main.py /tmp/e.log
+```
+
 ## sample test result
 
 * Add host in cluster
