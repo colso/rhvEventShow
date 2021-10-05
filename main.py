@@ -70,7 +70,8 @@ def showLog(c_dic, c_list):
         print("Correlation ID : %s" %(item))
         for idx in range(len(c_dic[item])):
             log_list=c_dic[item][idx][0].split(' ')
-            log_string="%s %s %6s" % (log_list[0], log_list[1], log_list[2])
+            # module margin 60. replace common module "org.ovirt.engine"
+            log_string="%s %s %6s [%s" % (log_list[0], log_list[1], log_list[2], log_list[3][18:].ljust(60))
             for l_idx in range(6, len(log_list)):
                 log_string="%s %s" % (log_string, log_list[l_idx])
             print(log_string)
